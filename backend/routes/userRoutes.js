@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
-// The term "router" in the context of Node.js and Express does not necessarily imply routing between pages in a traditional web application sense. Instead, it refers to organizing and handling routes for different endpoints or resources in your application.
 
-//router to create new User
 
 router.post("/", async (req, res) => {
   try {
@@ -14,6 +12,29 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
     console.log(error)
+  }
+});
+
+router.delete("/deleteAll", async (req, res) => {
+  try {
+    const deleteAllUsers = await User.deleteMany({});
+    res.send(deleteAllUsers);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
+router.delete("/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const deleteUser = await User.findByIdAndDelete(userId);
+    if (!deleteUser) {
+      return res.status(404).send("User not found");
+    }
+    res.send(deleteUser);
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 

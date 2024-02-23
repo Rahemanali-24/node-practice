@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserData } from '../models/user-data';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  createUser(userData:any): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}/users`,userData);
+  createUser(userData:UserData): Observable<UserData>{
+    return this.http.post<UserData>(`${this.baseUrl}/users`,userData);
   }
 
-  getHighScores(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/highScores`);
+  getHighScores(): Observable<UserData> {
+    return this.http.get<UserData>(`${this.baseUrl}/highScores`);
   }
 }
