@@ -18,9 +18,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-// have make router for crud operation 
-// have make models to specifiy schemas according to requirement
 
-// implmented cors to connect with angular port in middleware 
 
-// basic form of to implement post method in angular 
