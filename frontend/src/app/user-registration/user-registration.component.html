@@ -1,0 +1,28 @@
+<div>
+    <h2>User Registration</h2>
+    <form (ngSubmit)="createUser()">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required [(ngModel)]="userData.username">
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="userData.email">
+      </div>
+  
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="userData.password">
+      </div>
+  
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+  <div *ngIf="registeredUser">
+    <h3>Registered User:</h3>
+    <p><strong>Username:</strong> {{ registeredUser.username }}</p>
+    <p><strong>Email:</strong> {{ registeredUser.email }}</p>
+</div>
+  
